@@ -31,7 +31,7 @@ public class AAReducer  extends Reducer <Text,Text,Text,Text> {
        String output = new String("\t"+ countRF1 +"\t"+ countRF2 +"\t"+ countRF3);
         // TODO: write the (key, value) pair to the context
     	context.write(new Text(keyNew), new Text(output));
-        // TODO: consider how to use tabs to format output correctly
+        
                
 	  
    }
