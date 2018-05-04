@@ -58,16 +58,13 @@ public class AAMapper  extends Mapper <LongWritable,Text,Text,Text> {
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException, 
         InterruptedException {
-        // TODO declare String variable for Text value
+        
     	String line = value.toString();
      
-        // TODO: declare and initialize variables for tokens of each of 3 reading frames
+        
     	   String readFrame1, readFrame2, readFrame3;
     	   
-        // TODO: read, process, and write reading frame 1
-        // TCA GCC TTT TCT TTG ACC TCT TCT TTC TGT TCA TGT GTA TTT GCT GTC TCT TAG CCC AGA
-        // does TCA exist in codon2aaMap?
-        // if so, write (key, value) pair to context   
+        
         for(int i=0;i<line.length();i=i+3){
         	if(i+2<line.length()){
         	readFrame1 = line.substring(i, i+3);
@@ -75,10 +72,8 @@ public class AAMapper  extends Mapper <LongWritable,Text,Text,Text> {
         		context.write(new Text(codon2aaMap.get(readFrame1)), new Text("readFrame1"));
         }}
 
-        // TODO: read, process, and write reading frame 2
-        // T CAG CCT TTT CTT TGA CCT CTT CTT TCT GTT CAT GTG TAT TTG CTG TCT CTT AGC CCA GA
-        // does CAG exist in codon2aaMap?
-        // if so, write (key, value) pair to context 
+       
+      
         for(int i=1;i<line.length();i=i+3){
         	if(i+2<line.length()){
         	readFrame2 = line.substring(i, i+3);
@@ -86,10 +81,7 @@ public class AAMapper  extends Mapper <LongWritable,Text,Text,Text> {
         		context.write(new Text(codon2aaMap.get(readFrame2)), new Text("readFrame2"));
         }}
         
-        // TODO: read, process, and write reading frame 3
-        // TC AGC CTT TTC TTT GAC CTC TTC TTT CTG TTC ATG TGT ATT TGC TGT CTC TTA GCC CAG A
-        // does AGC exist in codon2aaMap?
-        // if so, write (key, value) pair to context 
+    
         for(int i=2;i<line.length();i=i+3){
         	if(i+2<line.length()){
         	readFrame3 = line.substring(i, i+3);
